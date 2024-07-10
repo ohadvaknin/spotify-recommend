@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Artist Recommender</h1>
+        <form id="artistForm" method="POST">
+            <label for="artist1">Artist 1:</label>
+            <input type="text" id="artist1" name="artist1" value="{{ request.form.artist1 or '' }}" required><br>
+            <label for="artist2">Artist 2:</label>
+            <input type="text" id="artist2" name="artist2" value="{{ request.form.artist2 or '' }}" required><br>
+            <label for="artist3">Artist 3:</label>
+            <input type="text" id="artist3" name="artist3" value="{{ request.form.artist3 or '' }}" required><br>
+            <button type="submit">Get Recommendations</button>
+        </form>
+
+        <div id="loading" class="spinner" style="display:none;"></div>
+
+        {% if recommended_artists %}
+            <h2>Recommended Artists:</h2>
+            <ul>
+                {% for artist in recommended_artists %}
+                    <li>{{ artist }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
