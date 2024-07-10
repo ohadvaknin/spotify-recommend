@@ -52,11 +52,22 @@ pip install -r requirements.txt
 
 ## Setup
 
-1. Rename `.env.example` to `.env` and fill in your Spotify API credentials:
+1. Create a `config.py` file in the root directory and fill in your Spotify API credentials:
 
+```python
+# config.py
+SPOTIPY_CLIENT_ID = 'your_spotify_client_id'
+SPOTIPY_CLIENT_SECRET = 'your_spotify_client_secret'
 ```
-SPOTIPY_CLIENT_ID='your_spotify_client_id'
-SPOTIPY_CLIENT_SECRET='your_spotify_client_secret'
+
+2. Update `artist_recommender.py` to import the credentials from `config.py`:
+
+```python
+# artist_recommender.py
+from config import SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET
+
+client_credentials_manager = SpotifyClientCredentials(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET)
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 ```
 
 ## Running the Application
