@@ -22,8 +22,7 @@ flask_app/
 ## Features
 
 - User-friendly web interface for inputting seed artists
-- Loading spinner to indicate processing
-- Recommendations based on network analysis of related artists
+- Recommendations based on network analysis and graph theory
 
 ## Prerequisites
 
@@ -35,7 +34,7 @@ flask_app/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/spotify-recommender.git
+git clone https://github.com/ohadvaknin/spotify-recommender.git
 cd spotify-recommender
 ```
 
