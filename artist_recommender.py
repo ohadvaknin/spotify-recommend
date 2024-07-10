@@ -3,11 +3,10 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
+from config import SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET
 
 # Authenticate with Spotify API
-CLIENT_ID = '8877c0f20ea448e78c6e06f05fe61b40'
-CLIENT_SECRET = '42bda3a602dd4ffea319ed344e74c7dd'
-client_credentials_manager = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
+client_credentials_manager = SpotifyClientCredentials(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET)
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 def get_artist_id(artist_name):
@@ -37,7 +36,7 @@ def build_artist_network(seed_artist_ids, depth):
         for related_artist_id in related_artists:
             edges.append((artist_id, related_artist_id))
             next_depth_artists.add(related_artist_id)
-        #print(f"Added {artist_info['name']}")
+        print(f"Added {artist_info['name']}")
 
     for current_depth in range(1, depth + 1):
         next_depth_artists = set()
@@ -49,7 +48,7 @@ def build_artist_network(seed_artist_ids, depth):
     return artist_data, edges
 
 def analyze_network(seed_artist_ids):
-    artist_data, edges = build_artist_network(seed_artist_ids, depth=2)
+    artist_data, edges = build_artist_network(seed_artist_ids, depth=3)
     artist_df = pd.DataFrame.from_dict(artist_data, orient='index')
     G = nx.Graph()
 
