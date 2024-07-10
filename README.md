@@ -39,14 +39,7 @@ git clone https://github.com/yourusername/spotify-recommender.git
 cd spotify-recommender
 ```
 
-2. Create a virtual environment and activate it:
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-3. Install the required packages:
+2. Install the required packages:
 
 ```bash
 pip install -r requirements.txt
@@ -54,7 +47,7 @@ pip install -r requirements.txt
 
 ## Setup
 
-1. Create a `config.py` file in the root directory and fill in your Spotify API credentials:
+1. Modify the `config.py` file in the root directory and fill in your Spotify API credentials:
 
 ```python
 # config.py
